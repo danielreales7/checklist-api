@@ -1,8 +1,11 @@
-const { createLogger, format, tranposrts } = require('winston');
+const { createLogger, format, transports } = require('winston');
 
 const logger = createLogger({
     format: format.simple(),
-    transports: [new tranposrts.Console()]
+    transports: [
+        new transports.Console(),
+        new transports.File({ filename: 'error.log', level: 'error' })
+    ]
 })
 
 module.exports = logger;
